@@ -43,10 +43,7 @@ public class VendingMachineTest {
 
     @Test
     public void buyProductWithZeroChange() {
-        machine.insertCoin(Coin.FIFTY);
-        machine.insertCoin(Coin.FIFTY);
-        machine.insertCoin(Coin.FIFTY);
-        machine.insertCoin(Coin.FIFTY);
+        insertCoinsForCoffee();
 
         assertThat(machine.buy(coffee), is(coffee));
         assertThat(machine.getChange(), is(0));
@@ -54,13 +51,17 @@ public class VendingMachineTest {
 
     @Test
     public void buyProductWithChange() {
-        machine.insertCoin(Coin.FIFTY);
-        machine.insertCoin(Coin.FIFTY);
-        machine.insertCoin(Coin.FIFTY);
-        machine.insertCoin(Coin.FIFTY);
+        insertCoinsForCoffee();
         machine.insertCoin(Coin.FIVE);
 
         assertThat(machine.buy(coffee), is(coffee));
         assertThat(machine.getChange(), is(Coin.FIVE.getValue()));
+    }
+
+    private void insertCoinsForCoffee() {
+        machine.insertCoin(Coin.FIFTY);
+        machine.insertCoin(Coin.FIFTY);
+        machine.insertCoin(Coin.FIFTY);
+        machine.insertCoin(Coin.FIFTY);
     }
 }
