@@ -17,4 +17,19 @@ public class VendingMachine {
         insertedCoins = new ArrayList<>();
         return change;
     }
+
+    public Product buy(Product product) {
+        int insertedCoinsSum = 0;
+        for (Coin coin : insertedCoins) {
+            insertedCoinsSum += coin.getValue();
+        }
+        if (insertedCoinsSum >= product.getPrice()) {
+            countChange();
+            return product;
+        }
+        return null;
+    }
+
+    private void countChange() {
+    }
 }

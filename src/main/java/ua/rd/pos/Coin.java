@@ -9,4 +9,8 @@ public enum Coin {
     Coin(int centsValue) {
         this.centsValue = centsValue;
     }
+
+    public int getValue() {
+        return centsValue;
+    }
 }
