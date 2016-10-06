@@ -1,6 +1,7 @@
 package ua.rd.pos;
 
 import org.hamcrest.CoreMatchers;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -56,6 +57,11 @@ public class VendingMachineTest {
 
         assertThat(machine.buy(coffee), is(coffee));
         assertThat(machine.getChange(), is(Coin.FIVE.getValue()));
+    }
+
+    @Test
+    public void getChangeWithoutBuying() {
+        assertThat(machine.getChange(), is(0));
     }
 
     private void insertCoinsForCoffee() {
