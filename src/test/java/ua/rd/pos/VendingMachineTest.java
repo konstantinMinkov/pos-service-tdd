@@ -7,7 +7,6 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertEquals;
 
 public class VendingMachineTest {
 
@@ -19,7 +18,7 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void buyAndCancel() {
+    public void insertCoinsAndCancel() {
         machine.insertCoin(Coin.FIFTY);
         machine.insertCoin(Coin.ONE);
 
