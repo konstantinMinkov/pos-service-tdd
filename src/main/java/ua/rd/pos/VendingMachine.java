@@ -7,6 +7,7 @@ import java.util.List;
 public class VendingMachine {
 
     private List<Coin> insertedCoins = new ArrayList<>();
+    private int change;
 
     public void insertCoin(Coin coin) {
         insertedCoins.add(coin);
@@ -19,17 +20,33 @@ public class VendingMachine {
     }
 
     public Product buy(Product product) {
-        int insertedCoinsSum = 0;
-        for (Coin coin : insertedCoins) {
-            insertedCoinsSum += coin.getValue();
-        }
-        if (insertedCoinsSum >= product.getPrice()) {
-            countChange();
+        final int insertedCoinsSum = countInsertedCoinsSum();
+        if (isEnoughMoney(product, insertedCoinsSum)) {
+            countChange(product, insertedCoinsSum);
             return product;
         }
         return null;
     }
 
-    private void countChange() {
+    private boolean isEnoughMoney(Product product, int insertedCoinsSum) {
+        return insertedCoinsSum >= product.getPrice();
+    }
+
+    private int countInsertedCoinsSum() {
+        int insertedCoinsSum = 0;
+        for (Coin coin : insertedCoins) {
+            insertedCoinsSum += coin.getValue();
+        }
+        return insertedCoinsSum;
+    }
+
+    private void countChange(Product product, int insertedCoins) {
+        change = insertedCoins - product.getPrice();
+    }
+
+    public int getChange() {
+        final int change = this.change;
+        this.change = 0;
+        return change;
     }
 }

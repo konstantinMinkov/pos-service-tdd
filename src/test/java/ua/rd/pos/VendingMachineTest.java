@@ -40,4 +40,15 @@ public class VendingMachineTest {
         machine.insertCoin(Coin.FIFTY);
         assertThat(machine.buy(coffee), CoreMatchers.nullValue());
     }
+
+    @Test
+    public void buyProductWithZeroChange() {
+        machine.insertCoin(Coin.FIFTY);
+        machine.insertCoin(Coin.FIFTY);
+        machine.insertCoin(Coin.FIFTY);
+        machine.insertCoin(Coin.FIFTY);
+
+        assertThat(machine.buy(coffee), is(coffee));
+        assertThat(machine.getChange(), is(0));
+    }
 }
