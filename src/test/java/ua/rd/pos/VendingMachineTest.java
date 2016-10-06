@@ -34,4 +34,11 @@ public class VendingMachineTest {
         final Product product = new Product(200, "Coffee");
         assertThat(machine.buy(product), CoreMatchers.nullValue());
     }
+
+    @Test
+    public void buyProductWithNotEnoughMoney() {
+        final Product product = new Product(200, "Coffee");
+        machine.insertCoin(Coin.FIFTY);
+        assertThat(machine.buy(product), CoreMatchers.nullValue());
+    }
 }
