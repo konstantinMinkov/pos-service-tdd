@@ -64,6 +64,14 @@ public class VendingMachineTest {
         assertThat(machine.getChange(), is(0));
     }
 
+    @Test
+    public void containsProducts() {
+        assertThat(machine.containsProduct(Product.COFFEE), is(true));
+        assertThat(machine.containsProduct(Product.TEA), is(true));
+        assertThat(machine.containsProduct(Product.JUICE), is(true));
+        assertThat(machine.containsProduct(new Product(160, "Lemonade")), is(false));
+    }
+
     private void insertCoinsForCoffee() {
         machine.insertCoin(Coin.FIFTY);
         machine.insertCoin(Coin.FIFTY);

@@ -2,6 +2,10 @@ package ua.rd.pos;
 
 public class Product {
 
+    public static final Product COFFEE = new Product(200, "Coffee");
+    public static final Product TEA = new Product(150, "Tea");
+    public static final Product JUICE = new Product(300, "Juice");
+
     private int price;
     private String name;
 

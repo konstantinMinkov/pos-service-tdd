@@ -49,4 +49,10 @@ public class VendingMachine {
         this.change = 0;
         return change;
     }
+
+    public boolean containsProduct(Product product) {
+        return Product.COFFEE.equals(product)
+                || Product.TEA.equals(product)
+                || Product.JUICE.equals(product);
+    }
 }
