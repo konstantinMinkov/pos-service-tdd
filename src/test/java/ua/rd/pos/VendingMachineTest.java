@@ -12,6 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class VendingMachineTest {
 
     private VendingMachine machine = new VendingMachine();
+    private Product coffee = new Product(200, "Coffee");
 
     @Test
     public void insertCoin() {
@@ -31,14 +32,12 @@ public class VendingMachineTest {
 
     @Test
     public void buyProductWithoutMoney() {
-        final Product product = new Product(200, "Coffee");
-        assertThat(machine.buy(product), CoreMatchers.nullValue());
+        assertThat(machine.buy(coffee), CoreMatchers.nullValue());
     }
 
     @Test
     public void buyProductWithNotEnoughMoney() {
-        final Product product = new Product(200, "Coffee");
         machine.insertCoin(Coin.FIFTY);
-        assertThat(machine.buy(product), CoreMatchers.nullValue());
+        assertThat(machine.buy(coffee), CoreMatchers.nullValue());
     }
 }
