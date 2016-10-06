@@ -51,4 +51,16 @@ public class VendingMachineTest {
         assertThat(machine.buy(coffee), is(coffee));
         assertThat(machine.getChange(), is(0));
     }
+
+    @Test
+    public void buyProductWithChange() {
+        machine.insertCoin(Coin.FIFTY);
+        machine.insertCoin(Coin.FIFTY);
+        machine.insertCoin(Coin.FIFTY);
+        machine.insertCoin(Coin.FIFTY);
+        machine.insertCoin(Coin.FIVE);
+
+        assertThat(machine.buy(coffee), is(coffee));
+        assertThat(machine.getChange(), is(Coin.FIVE.getValue()));
+    }
 }
