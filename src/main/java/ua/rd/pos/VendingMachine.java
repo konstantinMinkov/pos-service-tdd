@@ -21,7 +21,8 @@ public class VendingMachine {
 
     public Product buy(Product product) {
         final int insertedCoinsSum = countInsertedCoinsSum();
-        if (isEnoughMoney(product, insertedCoinsSum)) {
+        if (containsProduct(product)
+                && isEnoughMoney(product, insertedCoinsSum)) {
             countChange(product, insertedCoinsSum);
             return product;
         }
