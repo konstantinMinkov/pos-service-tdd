@@ -11,4 +11,11 @@ public class VendingMachineTest {
     public void createVendingMachine() {
         VendingMachine machine = new VendingMachine();
     }
+
+    @Test
+    public void insertCoin() {
+        int coinValue = 25;
+        VendingMachine machine = new VendingMachine();
+        machine.insertCoin(coinValue);
+    }
 }
