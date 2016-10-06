@@ -8,7 +8,6 @@ public class VendingMachineTest {
 
     @Test
     public void insertCoin() {
-        int coinValue = 25;
-        machine.insertCoin(coinValue);
+        machine.insertCoin(Coin.TWENTY_FIVE);
     }
 }

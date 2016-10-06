@@ -5,9 +5,9 @@ import java.util.List;
 
 public class VendingMachine {
 
-    private List<Integer> insertedCoins = new ArrayList<>();
+    private List<Coin> insertedCoins = new ArrayList<>();
 
-    public void insertCoin(int coinValue) {
-        insertedCoins.add(coinValue);
+    public void insertCoin(Coin coin) {
+        insertedCoins.add(coin);
     }
 }
